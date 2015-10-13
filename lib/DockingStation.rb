@@ -1,12 +1,9 @@
 require_relative 'Bike'
 class DockingStation
+  attr_reader :arr
 
   def initialize
     @arr = []
-  end
-
-  def arr
-    @arr
   end
 
   def release_bike
@@ -16,5 +13,8 @@ class DockingStation
   def docks_bike(b)
     @arr.push(b)
   end
-  
+
+  def show
+    @arr.last
+  end 
 end

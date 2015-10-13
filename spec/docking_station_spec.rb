@@ -18,4 +18,11 @@ describe DockingStation do
     subject.docks_bike(bi)
     expect(subject.arr).to include(bi)
   end
+
+  it 'shows docked bike' do
+    bi = Bike.new
+    subject.docks_bike(bi)
+    expect(subject.show).to eq bi
+  end
+
 end
