@@ -31,7 +31,7 @@ describe DockingStation do
   end
 
   it 'expects a Station at Capacity error' do
-    20.times{subject.docks_bikes(Bike.new)}
+    DockingStation::DEFAULT_CAPACITY.times{subject.docks_bikes(Bike.new)}
     expect {subject.docks_bikes(Bike.new)}.to raise_error("Station at Capacity")
 
   end
