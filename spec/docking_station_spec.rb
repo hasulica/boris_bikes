@@ -8,4 +8,14 @@ describe DockingStation do
     bike = subject.release_bike
     expect(bike).to be_working
   end
+
+  it 'responds to docks_bike' do
+    expect(subject).to respond_to(:docks_bike).with(1).argument
+  end
+
+  it 'docks bike' do
+    bi = Bike.new
+    subject.docks_bike(bi)
+    expect(subject.arr).to include(bi)
+  end
 end
