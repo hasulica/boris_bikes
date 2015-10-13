@@ -7,7 +7,8 @@ class DockingStation
   end
 
   def release_bike
-    Bike.new
+    raise StandardError, "No Bikes Available" unless @arr.length > 0
+    @arr.pop
   end
 
   def docks_bike(b)
@@ -16,5 +17,5 @@ class DockingStation
 
   def show
     @arr.last
-  end 
+  end
 end
