@@ -30,4 +30,10 @@ describe DockingStation do
     expect {subject.release_bike}.to raise_error("No Bikes Available")
   end
 
+  it 'expects a Station at Capacity error' do
+    bike = Bike.new
+    subject.docks_bike(bike)
+    expect {subject.docks_bike(bike)}.to raise_error("Station at Capacity")
+
+  end
 end

@@ -12,6 +12,7 @@ class DockingStation
   end
 
   def docks_bike(b)
+    raise StandardError, "Station at Capacity" unless @arr.length == 0
     @arr.push(b)
   end
 
