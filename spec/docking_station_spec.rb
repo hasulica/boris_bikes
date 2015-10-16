@@ -10,10 +10,6 @@ describe DockingStation do
     expect(subject.release_bikes).to be_working
   end
 
-  it 'responds to docks_bikes' do
-    expect(subject).to respond_to(:docks_bikes).with(1).argument
-  end
-
   it 'docks bikes' do
     bi = Bike.new
     subject.docks_bikes(bi)
@@ -43,4 +39,17 @@ describe DockingStation do
   it 'defaults to a capacity of 20' do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
+
+  it 'expects two arguments' do
+    expect(subject).to respond_to(:docks_bikes).with(1).arguments
+  end
+
+  it 'should not return broken bikes' do
+    bike = Bike.new
+    bike.break
+    subject.docks_bikes(bike)
+    expect { subject.release_bikes }.to raise_error("No working bikes available")
+
+  end
+
 end

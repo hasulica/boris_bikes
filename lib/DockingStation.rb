@@ -1,4 +1,5 @@
 require_relative 'Bike'
+
 class DockingStation
   DEFAULT_CAPACITY = 20
   attr_reader :bikes, :capacity
@@ -9,8 +10,15 @@ class DockingStation
   end
 
   def release_bikes
+
     raise StandardError, "No Bike Available" unless !empty?
-    @bikes.pop
+
+    @bikes.each do |bike|
+      if bike.working?
+        return @bikes.delete(bike)
+      end
+    end
+    raise StandardError, "No working bikes available"
   end
 
   def docks_bikes(b)
