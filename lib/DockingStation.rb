@@ -31,6 +31,17 @@ class DockingStation
     @bikes.last
   end
 
+  def broken_bikes
+    broken_bikes = []
+    @bikes.each do |bike|
+      if bike.working? == false
+        broken_bikes << bike
+      end
+
+    end
+    broken_bikes
+  end
+
   private
   def full?
     @bikes.length == @capacity

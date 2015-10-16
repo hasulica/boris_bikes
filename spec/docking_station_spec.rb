@@ -7,6 +7,10 @@ let(:bike) { double :bike }
     expect(subject).to respond_to :release_bikes
   end
 
+  it 'responds to broken_bikes' do
+    expect(subject).to respond_to :broken_bikes
+  end
+
   it 'releases working bikes' do
     bike = double("bike", :working? => "true")
     subject.docks_bikes(bike)
@@ -50,7 +54,19 @@ let(:bike) { double :bike }
     bike.break
     subject.docks_bikes(bike)
     expect { subject.release_bikes }.to raise_error("No working bikes available")
+  end
 
+
+  it 'should return an array on broken_bikes' do
+    expect(subject.broken_bikes).to be_kind_of Array
+  end
+
+  it 'should return an array on broken_bikes of bikes which are broken' do
+    bike1 = double("bike1", { working?: false, break: false })
+    bike2 = double("bike2", { working?: true})
+    subject.docks_bikes(bike1)
+    subject.docks_bikes(bike2)
+    expect(subject.broken_bikes).to eq [bike1]
   end
 
 end

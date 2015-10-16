@@ -1,12 +1,8 @@
-
 class Van
-  def collect_broken(docking_station)
-    @broken = []
-    docking_station.bikes.each do |bike|
-       if bike.working? == false
-         @broken << bike
-       end
-     end
-     @broken
+
+  attr_reader :broken_bikes
+
+  def collect_broken(broken_bikes)
+    broken_bikes
   end
 end
