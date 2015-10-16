@@ -1,4 +1,5 @@
 require_relative 'Bike'
+require_relative 'Van'
 
 class DockingStation
   DEFAULT_CAPACITY = 20
